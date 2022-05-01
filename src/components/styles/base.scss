@@ -2,5 +2,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  padding: 20px;
+}
+
+html, body, #root {
+  min-height: 100vh;
 }
