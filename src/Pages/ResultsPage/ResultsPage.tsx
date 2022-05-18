@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import { RootState } from '../../store';
 
 const ResultsPage = () => {
-  const a = 0;
+  const userName = useSelector((state: RootState) => state.test.userName);
 
   return (
     <div className="page">
@@ -10,7 +12,7 @@ const ResultsPage = () => {
         <div className="row">
           <div className="col-xs-12">
             <div className="box">
-              <PageTitle title="Thanks," />
+              <PageTitle title={`Thanks, ${userName}`} />
             </div>
           </div>
         </div>
