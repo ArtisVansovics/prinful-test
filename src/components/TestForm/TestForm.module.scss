@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 16px
+}
+
+.input {
+  border-radius: 5px;
+  background-color: #8ADEFF;
+  color: #A66A28;
+  font-size: 20px;
+  box-shadow: none;
+  outline: 3px solid #F2B26B;
+  border: none;
+  padding: 5px 10px;
+}
