@@ -1,15 +1,29 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Question } from '../../models/TestModel';
+import { getQuestion } from '../../data/TestsData';
+import Button from '../../components/Button/Button';
 
 const TestPage = () => {
+  const [currentQuestion, setCurrentQuestion] = useState<Question>();
   const { testId } = useParams();
-  const { id } = useParams();
+  const { questionId } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const question = getQuestion(Number(testId), Number(questionId));
+
+    if (question) {
+      setCurrentQuestion(question);
+    } else navigate('/home');
+  }, [testId, questionId]);
 
   return (
-    <div>
-      <h1>Test Page</h1>
-      <h1>{testId}</h1>
-      <h1>{id}</h1>
+    <div className="page">
+      <h1>{currentQuestion?.questionName}</h1>
+      {currentQuestion?.answers.map((answer) => (
+        <Button title={answer} />
+      ))}
     </div>
   );
 };

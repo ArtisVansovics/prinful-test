@@ -20,7 +20,7 @@ const App = () => (
         element={<HomePage />}
       />
       <Route
-        path="/test=:testId/q=:id"
+        path="/test=:testId/q=:questionId"
         element={<TestPage />}
       />
       <Route

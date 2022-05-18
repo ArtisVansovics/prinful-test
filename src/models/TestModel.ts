@@ -5,8 +5,8 @@ export type Test = {
   correctAnswers: string[];
 }
 
-type Question = {
-  id: number;
-  question: string;
+export type Question = {
+  questionId: number;
+  questionName: string;
   answers: string[];
 }

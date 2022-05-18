@@ -1,4 +1,4 @@
-import { Test } from '../models/TestModel';
+import { Question, Test } from '../models/TestModel';
 
 const tests: Test[] = [
   {
@@ -6,18 +6,18 @@ const tests: Test[] = [
     testName: 'Highest mountains',
     questions: [
       {
-        id: 1,
-        question: 'Which is the highest peak in Europe?',
+        questionId: 1,
+        questionName: 'Which is the highest peak in Europe?',
         answers: ['Mount Olympus', 'Mount Elbrus', 'Etna', 'Mont Blanc'],
       },
       {
-        id: 2,
-        question: 'Which is the second highest peak in Asia?',
+        questionId: 2,
+        questionName: 'Which is the second highest peak in Asia?',
         answers: ['Everest', 'Mount Ararat', 'K2', 'Mount Fuji'],
       },
       {
-        id: 3,
-        question: 'Which is the highest peak in Africa?',
+        questionId: 3,
+        questionName: 'Which is the highest peak in Africa?',
         answers: ['Kilimanjaro', 'Pico de Teide', 'Ruwenzori', 'Mount Kenya'],
       },
     ],
@@ -31,5 +31,17 @@ export const getTest = (testId: number) => (
     test.testId === testId
   ))
 );
+export const getQuestion = (testId: number, questionId: number) => {
+  const currentTest = getTest(testId);
+  let currentQuestion: Question | undefined;
+
+  if (currentTest) {
+    currentQuestion = currentTest.questions.find((question) => (
+      question.questionId === questionId
+    ));
+  }
+
+  return currentQuestion;
+};
 
 export default tests;
