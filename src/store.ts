@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import testReducer from './store/reducers/testReducer';
 
 const store = configureStore({
   reducer: {
+    test: testReducer,
   },
 });
 
