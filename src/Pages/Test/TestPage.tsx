@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Question } from '../../models/TestModel';
 import { getQuestion } from '../../data/TestsData';
 import Button from '../../components/Button/Button';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 const TestPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question>();
@@ -20,10 +21,24 @@ const TestPage = () => {
 
   return (
     <div className="page">
-      <h1>{currentQuestion?.questionName}</h1>
-      {currentQuestion?.answers.map((answer) => (
-        <Button title={answer} />
-      ))}
+      {currentQuestion && (
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12">
+              <div className="box">
+                <PageTitle title={currentQuestion.questionName} />
+              </div>
+            </div>
+            <div className="col-xs-12">
+              <div className="box">
+                {currentQuestion.answers.map((answer) => (
+                  <Button title={answer} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
