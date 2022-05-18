@@ -1,4 +1,6 @@
-const tests = [
+import { Test } from '../models/TestModel';
+
+const tests: Test[] = [
   {
     testId: 1,
     testName: 'Highest mountains',
@@ -22,5 +24,12 @@ const tests = [
     correctAnswers: ['Mount Elbrus', 'K2', 'Kilimanjaro'],
   },
 ];
+
+export const getTests = () => [...tests];
+export const getTest = (testId: number) => (
+  tests.find((test) => (
+    test.testId === testId
+  ))
+);
 
 export default tests;
