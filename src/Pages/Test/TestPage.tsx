@@ -7,6 +7,7 @@ import { getQuestion, getTest } from '../../data/TestsData';
 import Button from '../../components/Button/Button';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import { addAnswer } from '../../store/reducers/testReducer';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 const TestPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question>();
@@ -28,11 +29,22 @@ const TestPage = () => {
     } else navigate('/home');
   }, [testId, questionId]);
 
+  const percentageAnswered = () => {
+    let percentage = 0;
+
+    if (currentTest) {
+      percentage = (Number(questionId) / currentTest.questions.length) * 100;
+      console.log(currentTest.questions.length);
+    }
+
+    return percentage;
+  };
+
   return (
     <div className="page">
       {currentQuestion && (
         <div className="container">
-          <div className="row">
+          <div className="row center-xs">
             <div className="col-xs-12">
               <div className="box">
                 <PageTitle title={currentQuestion.questionName} />
@@ -46,6 +58,11 @@ const TestPage = () => {
                     onClick={() => setCurrentAnswer(answer)}
                   />
                 ))}
+              </div>
+            </div>
+            <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+              <div className="box">
+                <ProgressBar percentDone={percentageAnswered()} />
               </div>
             </div>
             <div className="col-xs-12">
