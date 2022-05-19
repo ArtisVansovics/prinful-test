@@ -50,21 +50,29 @@ const TestPage = () => {
                 <PageTitle title={currentQuestion.questionName} />
               </div>
             </div>
-            <div className="col-xs-12">
+          </div>
+          <div className="row center-xs">
+            <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
               <div className="box">
-                {currentQuestion.answers.map((answer) => (
-                  <Button
-                    title={answer}
-                    onClick={() => setCurrentAnswer(answer)}
-                  />
-                ))}
+                <div className="grid">
+                  {currentQuestion.answers.map((answer) => (
+                    <Button
+                      title={answer}
+                      onClick={() => setCurrentAnswer(answer)}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
+          <div className="row center-xs">
             <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6">
               <div className="box">
                 <ProgressBar percentDone={percentageAnswered()} />
               </div>
             </div>
+          </div>
+          <div className="row center-xs">
             <div className="col-xs-12">
               <div className="box">
                 {currentTest && answers.length < currentTest.questions.length - 1
